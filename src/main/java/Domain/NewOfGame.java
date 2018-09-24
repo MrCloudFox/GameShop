@@ -13,6 +13,10 @@ public class NewOfGame {
         this.dateOfNew = new Date();
     }
 
+    public String getText() {
+        return text;
+    }
+
     public Date getDateOfNew() {
         return dateOfNew;
     }

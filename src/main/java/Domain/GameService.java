@@ -8,10 +8,11 @@ public class GameService {
     IPresentService presentService;
     IFeedBackService feedBackService;
     INewsService newsService;
+    ICashService cashService;
 
     public GameService(IDeliveryService deliveryService, IPurchaseReturnsService purchaseReturnsService,
                        IPresentService presentService, IFeedBackService feedBackService,
-                       INewsService newsService) {
+                       INewsService newsService, ICashService cashService) {
         this.deliveryService = deliveryService;
         this.purchaseReturnsService = purchaseReturnsService;
         this.presentService = presentService;
@@ -43,5 +44,15 @@ public class GameService {
     public void postNew(User user, Game game, String text) throws OperationsException {
         game.addNew(user, text);
         newsService.postNew(user, game);
+    }
+
+    public void replenishCash(User user, double sum) throws OperationsException{
+        user.replenishBalance(sum);
+        cashService.setCash(user, sum);
+    }
+
+    public void withdrawCash(User user, double sum) throws OperationsException{
+        user.withdrawMoney(sum);
+        cashService.setCash(user, sum);
     }
 }

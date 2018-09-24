@@ -34,6 +34,10 @@ public class Game {
         return id;
     }
 
+    public HashMap<Integer, NewOfGame> getNews() {
+        return news;
+    }
+
     public String getName() {
         return name;
     }

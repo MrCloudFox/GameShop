@@ -66,12 +66,19 @@ public class User {
         game.addFeedBack(this, text);
     }
 
+    public void checkToWithdrawMoney(double sum) throws OperationsException{
+        if(sum > balance) {
+            throw new OperationsException("Insufficient funds");
+        }
+    }
+
     public String replenishBalance(double sum) {
         balance += sum;
         return "Your balance " + balance;
     }
 
-    public void withdrawMoney(double sum) {
+    public void withdrawMoney(double sum) throws OperationsException{
+        checkToWithdrawMoney(sum);
         balance -= sum;
     }
 
